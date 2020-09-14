@@ -9,7 +9,7 @@ metadata:
   name: conta    
 spec:
   ports:
-  - nodePort: 30081
+  - nodePort: 30071
     port: 8080
     protocol: TCP
     targetPort: 8080
