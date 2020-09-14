@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>io.github.diegolirio</groupId>
 	<artifactId>conta</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>conta</name>
 	<description>Contas </description>
 
