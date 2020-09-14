@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: conta
+    provider: fabric8
+    version: REPLACE_VERSION
+    group: io.github.diegolirio
+    canary: "true"
+  name: conta-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conta
+      provider: fabric8
+      group: io.github.diegolirio
+  template:
+    metadata:
+      labels:
+        app: conta
+        provider: fabric8
+        version: REPLACE_VERSION
+        group: io.github.diegolirio
+        canary: "true"
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/actuator/prometheus'
+        prometheus.io/port: '8080'          
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SPRING_PROFILES_ACTIVE
+          value: develop
+        image: diegolirio/conta:REPLACE_VERSION
+        imagePullPolicy: Always
+        name: spring-boot-starter-parent
+        securityContext:
+          privileged: false

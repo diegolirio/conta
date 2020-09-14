@@ -1,0 +1,43 @@
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# ...
+# spec:
+#   hosts:
+#   - product-page-svc.bookinfo-k8s-helm-istio-canary.svc.cluster.local
+#   gateways:
+#   - product-page
+#   http:
+#   - route:
+#     - destination:
+#         host: product-page-svc.bookinfo-k8s-helm-istio-canary.svc.cluster.local
+#         subset: production
+#         port:
+#           number: 9080
+#       weight: 100
+#     - destination:
+#         host: product-page-svc.bookinfo-k8s-helm-istio-canary.svc.cluster.local
+#         subset: canary
+#         port:
+#           number: 9080
+#       weight: 0
+
+
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: nodejs
+# spec:
+#   hosts:
+#   - "*"
+#   gateways:
+#   - nodejs-gateway
+#   http:
+#   - route:
+#     - destination:
+#         host: nodejs
+#         subset: v1
+#       weight: 80
+#     - destination:
+#         host: nodejs
+#         subset: v2
+#       weight: 20
