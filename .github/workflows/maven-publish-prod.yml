@@ -50,7 +50,7 @@ jobs:
         name: Publish to DockerHub
         run: |
           ls target/
-          mvn fabric8:build fabric8:push
+          mvn docker:build docker:push
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -75,7 +75,7 @@ jobs:
           port: 22
           script: |
             ls
-            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-service.yml
-            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-deployment-v1.yml
-            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-deployment-v2.yml
+            sudo microk8s.kubectl apply -f devops/prod/conta-kubernetes-service.yml
+            sudo microk8s.kubectl apply -f devops/prod/conta-kubernetes-deployment-v1.yml
+            sudo microk8s.kubectl apply -f devops/prod/conta-kubernetes-deployment-v2.yml
 
