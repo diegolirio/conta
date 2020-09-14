@@ -6,7 +6,7 @@ NEW_VERSION=$OLD_VERSION
 
 case "$OLD_VERSION" in
     *$SNAPSHOT* ) echo "Version OK";;
-    * ) echo "Error... version should to be $SNAPSHOT"; exit 1;
+    * ) echo "Error... version should to be $SNAPSHOT ====> $OLD_VERSION"; exit 1;
 esac
 
 mvn release:update-versions          

@@ -3,7 +3,7 @@ NEW_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --n
 
 case "$NEW_VERSION" in
     *$SNAPSHOT* ) echo "Version OK";;
-    * ) echo "Error... version should to be $SNAPSHOT"; exit 1;
+    * ) echo "Error... version should to be $SNAPSHOT ====> $NEW_VERSION"; exit 1;
 esac
 
 NEW_VERSION_RELEASE=$(echo $NEW_VERSION | sed -e "s/$SNAPSHOT/RELEASE/g")
