@@ -9,7 +9,7 @@ items:
         expose: "true"
         app: conta-develop
         provider: fabric8
-        version: 0.0.7-SNAPSHOT
+        version: 0.0.8-SNAPSHOT
         group: io.github.diegolirio
       name: conta-develop
     spec:
@@ -29,7 +29,7 @@ items:
       labels:
         app: conta-develop
         provider: fabric8
-        version: 0.0.7-SNAPSHOT
+        version: 0.0.8-SNAPSHOT
         group: io.github.diegolirio
       name: conta-develop
     spec:
@@ -44,7 +44,7 @@ items:
           labels:
             app: conta-develop
             provider: fabric8
-            version: 0.0.7-SNAPSHOT
+            version: 0.0.8-SNAPSHOT
             group: io.github.diegolirio
           annotations:
             prometheus.io/scrape: 'true'
@@ -59,7 +59,7 @@ items:
                       fieldPath: metadata.namespace
                 - name: SPRING_PROFILES_ACTIVE
                   value: develop
-              image: diegolirio/conta:0.0.7-SNAPSHOT
+              image: diegolirio/conta:0.0.8-SNAPSHOT
               imagePullPolicy: Always
               name: spring-boot-starter-parent
               securityContext:
