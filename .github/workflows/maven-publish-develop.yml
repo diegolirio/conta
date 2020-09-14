@@ -77,5 +77,5 @@ jobs:
           port: 22
           script: |
             ls
-            sudo microk8s.kubectl apply -f devops/develop/digio-kubernetes.yml
+            sudo microk8s.kubectl apply -f devops/develop/conta-kubernetes.yml
 
