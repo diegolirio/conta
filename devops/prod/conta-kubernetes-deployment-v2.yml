@@ -4,7 +4,7 @@ metadata:
   labels:
     app: conta
     provider: fabric8
-    version: REPLACE_VERSION
+    version: 0.0.8-RELEASE
     group: io.github.diegolirio
     canary: "true"
   name: conta-v2
@@ -20,7 +20,7 @@ spec:
       labels:
         app: conta
         provider: fabric8
-        version: REPLACE_VERSION
+        version: 0.0.8-RELEASE
         group: io.github.diegolirio
         canary: "true"
       annotations:
@@ -36,7 +36,7 @@ spec:
               fieldPath: metadata.namespace
         - name: SPRING_PROFILES_ACTIVE
           value: develop
-        image: diegolirio/conta:REPLACE_VERSION
+        image: diegolirio/conta:0.0.8-RELEASE
         imagePullPolicy: Always
         name: spring-boot-starter-parent
         securityContext:
