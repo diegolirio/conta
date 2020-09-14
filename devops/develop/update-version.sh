@@ -1,12 +1,12 @@
 SNAPSHOT="SNAPSHOT"
-NEW_VERSION=$(cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}')
+OLD_VERSION=$(cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}')
+NEW_VERSION=$OLD_VERSION
 
-case "$NEW_VERSION" in
+case "$OLD_VERSION" in
     *$SNAPSHOT* ) echo "Version OK";;
     * ) echo "Error... version should to be $SNAPSHOT";;
 esac
 
-OLD_VERSION=$(cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}')
 #MVN_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
 mvn release:update-versions          
 NEW_VERSION=$(cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}')
