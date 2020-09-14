@@ -15,6 +15,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<enviroment>develop</enviroment>
 	</properties>
 
 	<dependencies>
@@ -46,6 +47,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.eclipse.jkube</groupId>-->
+<!--				<artifactId>kubernetes-maven-plugin</artifactId>-->
+<!--				<version>1.0.0</version>-->
+<!--			</plugin>-->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.2.2</version>
+				<configuration>
+					<imageName>diegolirio/${project.artifactId}:${project.version}</imageName>
+					<baseImage>fabric8/java-alpine-openjdk11-jre</baseImage>
+					<entryPoint>["java", "-jar", "-Dspring.profiles.active=${enviroment}", "/${project.build.finalName}.jar"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+							<include>*.yml</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
